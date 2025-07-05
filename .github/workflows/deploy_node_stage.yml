@@ -28,6 +28,6 @@ jobs:
         run: |
           echo "Node.js version: $(node --version)"
           echo "npm version: $(npm --version)"
-      - run: npm ci
+      - run: npm ci --verbose
       - run: npm run code-check
       - run: npm test
