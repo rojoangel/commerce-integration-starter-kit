@@ -14,7 +14,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        node-version: [ 22.x ]
+        node-version: [ 22 ]
         os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
@@ -24,6 +24,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
           check-latest: true
+      - name: Check Node.js version
+        run: |
+          echo "Node.js version: $(node --version)"
+          echo "npm version: $(npm --version)"
       - run: npm ci
       - run: npm run code-check
       - run: npm test
